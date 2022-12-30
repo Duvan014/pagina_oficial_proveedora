@@ -1,0 +1,447 @@
+:root{
+  --color1: rgb(219,144,.5);
+  --color2: rgba(23, 180, 83, 0.877);
+  --color3: rgba(11,194,211, 0.623);
+  --fondo: #f2f2f2;
+  --titulos: 33px;
+  --margenes: 60px;
+  --espacios: 10px;
+  --espacios-contenido:45px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'open sans';
+  background: var(--fondo);
+}
+
+img{
+  vertical-align: top;
+}
+
+
+/* Preloader */
+.hidden{
+  overflow: hidden;
+}
+
+.centrado{
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background: #000;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.lds-facebook {
+  display: inline-block;
+  position: relative;
+  width: 64px;
+  height: 64px;
+}
+
+.lds-facebook div {
+  display: inline-block;
+  position: absolute;
+  left: 6px;
+  width: 13px;
+  background: #cef;
+  animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+}
+
+.lds-facebook div:nth-child(1) {
+  left: 6px;
+  animation-delay: -0.24s;
+}
+
+.lds-facebook div:nth-child(2) {
+  left: 26px;
+  animation-delay: -0.12s;
+}
+
+.lds-facebook div:nth-child(3) {
+  left: 45px;
+  animation-delay: 0;
+}
+
+@keyframes lds-facebook {
+  0% {
+    top: 6px;
+    height: 51px;
+  }
+
+  50%,
+  100% {
+    top: 19px;
+    height: 26px;
+  }
+}
+
+/* Header */
+/*usamos linear-gradient los usamos para los colores del fondo, ademas background-attachment: fixed
+para que se le adapte a la pantalla */
+header{
+  width: 100%;
+  height:600px;
+  background: linear-gradient(to bottom,
+  rgba(211,135,20, .6),
+  rgba(29,241,171, .6),
+  rgba(7,109,150, .45)
+  ), url(img/fondo.jpg);
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+}
+
+nav{
+  width: 100%;
+  position: fixed;
+  box-shadow: 0 0 10px 0 rgba(0,0,0,.5)
+}
+/*en el nav 1 estamos teniendo nuestro menu con las opciones*/
+.nav1{
+  background: transparent;
+  height: 80px;
+  color:#fff;
+}
+/*en el nav2 le agregamos el fondo y ademas cuando bajamos nuestro menu de opciones se agranda debido 
+que en el height le agregamos 20px mas*/
+.nav2{
+  background: var(--fondo);
+  height:100px;
+  color:#000;
+}
+/*vamos a hacer que en el height inherit es para que herede de su padre nav1 o nav 2*/
+.contenedor-nav{
+  display: flex;
+  margin: auto;
+  width: 90%;
+  justify-content: space-between;
+  align-items: center;
+  max-width:1000px;
+  height:inherit;
+  overflow: hidden;
+}
+/*inline-block para poder usar propiedades como el padding, ademas de esto en el color 
+le decimo que sea inherit para que tome el color del padre ya sea nav 1 o nav 2*/
+/*border-bottom: 3px solid transparent; es para cuando pasamso el mause por encima de el 1mer menu sale el color
+debajo de la opcion en la que estamos pasando*/
+nav .enlaces a{
+  display: inline-block;
+  padding: 5px 0;
+  margin-right: 17px;
+  font-size: 17px;
+  font-weight: 300;
+  text-decoration: none;
+  border-bottom: 3px solid transparent;
+  color: inherit;
+}
+
+nav .enlaces a:hover{
+  border-bottom: 3px solid #1498a4;
+  transition: 0.6s;
+}
+
+.logo, .logo img{ height:80px;}
+/*displey none es para cuando este desde un movil le aparezca el menu hamburgesa*/
+.icono{
+  display:none;
+  font-size: 24px;
+  padding: 23.5px 20px;
+}
+/*flex para que se le acomode el contenido a la pantalla osea para que se organice y se vea
+cada contenido mas organizado*/
+/*con este es que centramos el texto que tenemos en el encabezado*/
+.textos{
+  width: 100%;
+  height: 100%;
+  display:flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  color:#fff;
+  overflow: hidden;
+  text-align: center;
+}
+
+.textos>h1{font-size:80px;;}
+
+.textos>h2{font-size: 30px; font-weight: 300;}
+
+/* Main */
+/*Aqui agregamos a los margenes el espacio con el Width le decimos que sea de 90% y el texto que sea centrado,
+ademas le decimos que la letra se le acomode a la pantalla*/
+
+.contenedor{
+  margin:auto;
+  padding: var(--margenes) 0;
+  width: 90%;
+  max-width: 1000px;
+  text-align: center;
+  overflow: hidden;
+}
+/*Aqui agregamos el color a los titulos*/
+.contenedor h3{
+  font-size: var(--titulos);
+  color: var(--color1);
+  margin-bottom: var(--espacios);
+}
+/*Aqui agregamos el color a los subtitulos*/
+.contenedor p{
+  font-size: var(--subtitulos);
+  font-weight: 300;
+  color: var(--color1);
+}
+/*after es depues de esta clase o de este elemento esto lo usamos para evitar recordar cuanto tiene cada
+espaciado y asi lo hago dinamicamente
+el after que tenemos en html todos vamos a agrgarle despues de el elemento after le vamos a agregar una caja 
+con los siguiente*/
+.after:after{
+  content:'';
+  display: block;
+  margin: auto;
+  margin-top: var(--espacios);
+  width: 100px;
+  height: 2px;
+  background: var(--color1);
+  margin-bottom: var(--espacios-contenido);
+}
+/*esto se va a hacer despues de los card
+con el flex lo que hacemos es que vaya bajando y no se vea todo junto allí*/
+.card{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+/*box-shadow: es para agregar los cuadritos que tenemos en nuestra pagina*/
+.content-card{
+  width: 31%;
+  box-shadow: 0 0 6px 0 rgba(0,0,0,.5);
+  overflow: hidden;
+  height:400px;
+}
+
+.people{
+  height: 80%;
+}
+/*aqui agregamos la imagen de content-card*/
+.content-card img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.texto-team{
+  height: 20%;
+  width: 100%;
+  padding: var(--espacios) 0;
+}
+/*es para lo que tenemos al final como lo son los iconos de Facebook, Youtube*/
+.about{
+  background: url(img/teclado.jpg);
+  height: auto;
+}
+/*flex-wrap: utilizamos el flex-wrap para que me organice los iconos horizontalmente,
+con un margen auto y el contenido lo organizo con justify-content: space-between*/
+.servicios{
+  display: flex;
+  color:#fff;
+  justify-content: space-between;
+  margin: auto;
+  flex-wrap: wrap;
+}
+
+.caja-servicios{
+  width: 30%;
+  margin: auto;
+  text-align: center;
+}
+
+.caja-servicios>h4{
+  margin-bottom: var(--espacios);
+}
+
+.caja-servicios>p{
+  text-align: center;
+}
+
+.botones-work{
+  overflow: hidden;
+}
+/*display: inline-block para que me permita usar las propiedades padding:que es donde le
+agregamos los pixeles de las letras que tenemos en nuestro trabajo*/
+.botones-work li{
+  display: inline-block;
+  text-align: center;
+  margin-left: var(--espacios);
+  margin-bottom: var(--espacios-contenido);
+  padding: 6px 12px;
+  border: 1px solid var(--color1);
+  list-style: none;
+  color: var(--color1);
+}
+/*usamos el hover estamos diciendo que cuando apse el maus sobre las etiquteas li
+cambie el color de blanco a color 1 que es naranja 
+*/
+.botones-work li:hover{
+  background: var(--color1);
+  color:#fff;
+  cursor: pointer;
+}
+/*le agregamos el color1 cuando este en la etiqueta y los demas estan en blanco*/
+.botones-work .active{
+  background: var(--color1);
+  color:#fff;
+}
+
+.galeria-work{
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+/*aqui le damos orden a nuestras imagenes y ellas se agrgan una debajo de la otra con un espacio de contenido*/
+.cont-work{
+  width: 31%;
+  box-shadow: 0 0 6px 0 rgba(0,0,0,.5);
+  height:300px;
+  overflow: hidden;
+  margin-bottom: var(--espacios-contenido);
+}
+
+.img-work{
+  height: 90%;
+  width: 100%;
+}
+/*object-fit: cover para que se vea con el textito debajo bien elegante*/
+.img-work img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.textos-work{
+  height: 10%;
+}
+
+.textos-work h4{
+  line-height: 30px;
+  font-weight: 300;
+}
+
+/* Footer */
+
+footer{background:url(img/teclado.jpg);}
+
+.marca-logo{
+  width: 40%;
+  margin: auto;
+  margin-bottom: var(--espacios);
+}
+.marca-logo img{
+  width: 100%;
+}
+.iconos{
+  display: flex;
+  margin: auto;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.redes-sociales li{
+display: inline-block;
+}
+.redes-sociales a{
+  padding: 40px;
+}
+/*aqui le hacemos el espaciado a los iconos ademas le damos la fuente de 60px y le damos la inline-block*/
+.fa-brands{
+  font-size:60px;
+  color: #FFF;
+  margin-bottom: var(--espacios);
+  display: inline-block;
+}
+
+footer p{
+  margin-top:var(--espacios);
+}
+
+@media screen and (max-width: 700px){
+  .nav2{
+    color: #fff;
+  }
+/*aqui lo que hacemos es para cuando abrimos nuestra pagina web nuestro menu hamburguesa aparesca*/
+  .icono{
+    display:block;
+    cursor: pointer;
+  }
+/*.enlaces para meter nuestro menu
+en el menu hamburguesa
+fixed para que aparezcan las palabras que tenemos en nuestro menú*/
+/*cone el width de 0, y el overflow: hidden escondemos el menú hamburguesa*/
+  .enlaces{
+    position: fixed;
+    top:80px;
+    background: #2c3e50;
+    left: 0;
+    height: 100%;
+    transition: 1s;
+    width: 0;
+    overflow: hidden;
+  }
+/*pading para el espaciado*/
+  .enlaces a{
+    display: block;
+    width: 100%;
+    height: 50px;
+    padding: 20px;
+    text-align: center;
+    background: #34495e;
+    color:#fff;
+  }
+
+  .textos>h1{font-size: 70px;}
+  .textos>h2{font-size:35px;}
+
+  .content-card{
+    width: 48%;
+    margin-bottom:var(--margenes);
+  }
+/*margenes: 30px este es para configurar los pixeles que teniamos antes en el content-card y colocarlos de 30px*/
+  :root{
+    --margenes: 30px;
+  }
+}
+/*este media lo usamos para configurar los textos y las imagenes cuando tengan 500px*/
+@media screen and (max-width: 500px){
+  :root{
+    --espacios-contenido: 25px;
+  }
+
+  .content-card{
+    width: 90%;
+  }
+
+  .caja-servicios{
+    width: 90%;
+    margin-bottom: var(--margenes);
+  }
+
+  .cont-work{
+    width: 85%;
+  }
+
+  .marca-logo{
+    width: 80%;
+  }
+
+  .iconos{
+    margin: auto;
+  }
+}
